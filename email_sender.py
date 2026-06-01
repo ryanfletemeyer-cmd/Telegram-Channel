@@ -25,7 +25,6 @@ def send_email(to_address, subject, body):
     msg["Subject"] = subject
     msg.set_content(body)
 
-    with smtplib.SMTP("smtp.gmail.com", 587, timeout=30) as server:
-        server.starttls()
+    with smtplib.SMTP_SSL("smtp.gmail.com", 465, timeout=30) as server:
         server.login(GMAIL_ADDRESS, GMAIL_APP_PASSWORD)
         server.send_message(msg)
